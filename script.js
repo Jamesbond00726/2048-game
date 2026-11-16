@@ -5,9 +5,9 @@ const cols = 4;
 const grid = [];
 
 for (let i = 0; i < rows; i++) {
-  grid[i] = []; 
+  grid[i] = [];
   for (let j = 0; j < cols; j++) {
-    grid[i][j] = 0; 
+    grid[i][j] = 0;
   }
 }
 
@@ -75,6 +75,7 @@ function moveLine(line) {  //merging and removing of tiles
 }
 
 function move(direction) {  //arrow direction
+  const previousGrid = JSON.stringify(grid);
   for (let i = 0; i < rows; i++) {
     let line = [];
 
@@ -104,13 +105,35 @@ function move(direction) {  //arrow direction
       }
     }
   }
+  if (JSON.stringify(grid) === previousGrid) {
+    return;
+  }
+
+  addStartingTile();
 
   scoreElement.textContent = score;
   renderBoard();
 }
 renderBoard();
 
-document.addEventListener("keydown", function (event) {
+function startNewGame() {  // new game 
+  for (let i = 0; i < rows; i++) {
+    grid[i].fill(0);
+  }
+
+  score = 0;
+  scoreElement.textContent = score;
+
+  addStartingTile();
+  addStartingTile();
+
+  renderBoard();
+}
+
+const newGameButton = document.getElementById("new-game");
+newGameButton.addEventListener("click", startNewGame);
+
+document.addEventListener("keydown", function (event) {  // Arrow key movements
   const directions = {
     ArrowLeft: "left",
     ArrowRight: "right",

@@ -12,17 +12,22 @@
     <div class="mx-auto mt-6 flex w-96 items-center justify-between">
         <h1 class="text-6xl font-bold text-[#776e65]">2048</h1>
 
+        <button id="new-game"
+            class="h-16 rounded-xl bg-[#8f7a66] px-3 text-sm font-bold text-white hover:bg-[#776452] transition-colors cursor-pointer">
+            New Game
+        </button>
+
         <div class="rounded-xl bg-[#bbada0] px-5 py-2 text-center text-white">
             <div class="text-sm font-bold">SCORE</div>
             <div id="score" class="text-2xl font-bold">0</div>
         </div>
     </div>
-    <div class="mt-28">
+    <div class="mt-16">
         <div id="board" class="h-96 w-96 rounded-xl bg-[#bbada0] grid grid-cols-4 gap-2 mx-auto p-2">
         </div>
 
     </div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

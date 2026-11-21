@@ -29,6 +29,9 @@ function addStartingTile() {
   grid[row][col] = 2;
 }
 
+// grid[0][0] = 1024;
+// grid[0][1] = 1024;
+
 addStartingTile();
 addStartingTile();
 
@@ -56,6 +59,10 @@ function renderBoard() {
 let score = 0;
 const scoreElement = document.getElementById("score");  //score update
 
+let won = false;
+let gameOver = false;
+const gameMessage = document.getElementById("game-message");
+
 function moveLine(line) {  //merging and removing of tiles
   const numbers = line.filter(value => value !== 0);
 
@@ -73,9 +80,23 @@ function moveLine(line) {  //merging and removing of tiles
 
   return numbers;
 }
+function hasMovesAvailable() {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (grid[i][j] === 0) return true;
+      if (j < cols - 1 && grid[i][j] === grid[i][j + 1]) return true;
+      if (i < rows - 1 && grid[i][j] === grid[i + 1][j]) return true;
+    }
+  }
 
-function move(direction) {  //arrow direction
+  return false;
+}
+
+function move(direction) {
+  if (gameOver) return;
+
   const previousGrid = JSON.stringify(grid);
+
   for (let i = 0; i < rows; i++) {
     let line = [];
 
@@ -105,11 +126,22 @@ function move(direction) {  //arrow direction
       }
     }
   }
-  if (JSON.stringify(grid) === previousGrid) {
-    return;
+
+  if (JSON.stringify(grid) === previousGrid) return;
+
+  if (!won && grid.some(row => row.includes(2048))) {
+    won = true;
+    gameMessage.textContent = "You reached 2048! You win!";
+    gameMessage.classList.remove("hidden");
   }
 
   addStartingTile();
+
+  if (!hasMovesAvailable() && !won) {
+    gameOver = true;
+    gameMessage.textContent = "No moves left!";
+    gameMessage.classList.remove("hidden");
+  }
 
   scoreElement.textContent = score;
   renderBoard();
@@ -117,6 +149,9 @@ function move(direction) {  //arrow direction
 renderBoard();
 
 function startNewGame() {  // new game 
+  gameOver = false;
+  won = false;
+gameMessage.classList.add("hidden");
   for (let i = 0; i < rows; i++) {
     grid[i].fill(0);
   }

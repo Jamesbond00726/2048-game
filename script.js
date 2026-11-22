@@ -198,3 +198,26 @@ document.addEventListener("keydown", function (event) {  // Arrow key movements
   }
 });
 
+let touchStartX = 0;
+let touchStartY = 0;
+
+boardElement.style.touchAction = "none";
+
+boardElement.addEventListener("pointerdown", event => {
+  touchStartX = event.clientX;
+  touchStartY = event.clientY;
+});
+
+boardElement.addEventListener("pointerup", event => {
+  const dx = event.clientX - touchStartX;
+  const dy = event.clientY - touchStartY;
+
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    move(dx > 0 ? "right" : "left");
+  } else {
+    move(dy > 0 ? "down" : "up");
+  }
+});
+

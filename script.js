@@ -29,9 +29,6 @@ function addStartingTile() {
   grid[row][col] = 2;
 }
 
-// grid[0][0] = 1024;
-// grid[0][1] = 1024;
-
 addStartingTile();
 addStartingTile();
 
@@ -45,11 +42,30 @@ function renderBoard() {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       const tile = document.createElement("div");
-      tile.className =
-        "aspect-square rounded-xl bg-[#cdc1b4] flex items-center justify-center";
+      const value = grid[i][j];
 
-      if (grid[i][j] !== 0) {
-        tile.textContent = grid[i][j];
+      const tileColors = {
+        2: "bg-[#eee4da] text-[#776e65]",
+        4: "bg-[#ede0c8] text-[#776e65]",
+        8: "bg-[#f2b179] text-white",
+        16: "bg-[#f59563] text-white",
+        32: "bg-[#f67c5f] text-white",
+        64: "bg-[#f65e3b] text-white",
+        128: "bg-[#edcf72] text-white",
+        256: "bg-[#edcc61] text-white",
+        512: "bg-[#edc850] text-white",
+        1024: "bg-[#edc53f] text-white",
+        2048: "bg-[#edc22e] text-white"
+      };
+
+      tile.className =
+        "aspect-square rounded-xl flex items-center justify-center text-2xl font-bold";
+
+      if (value === 0) {
+        tile.classList.add("bg-[#cdc1b4]");
+      } else {
+        tile.textContent = value;
+        tile.classList.add(...(tileColors[value] || "bg-[#3c3a32] text-white").split(" "));
       }
 
       boardElement.appendChild(tile);
@@ -151,7 +167,7 @@ renderBoard();
 function startNewGame() {  // new game 
   gameOver = false;
   won = false;
-gameMessage.classList.add("hidden");
+  gameMessage.classList.add("hidden");
   for (let i = 0; i < rows; i++) {
     grid[i].fill(0);
   }

@@ -14,11 +14,12 @@
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
     --font-weight-bold: 700;
     --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -180,6 +181,9 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
   }
@@ -209,6 +213,12 @@
   }
   .w-96 {
     width: calc(var(--spacing) * 96);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-96 {
+    max-width: calc(var(--spacing) * 96);
   }
   .border-collapse {
     border-collapse: collapse;
@@ -241,6 +251,9 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .bg-\[\#3c3a32\] {
+    background-color: #3c3a32;
+  }
   .bg-\[\#8f7a66\] {
     background-color: #8f7a66;
   }
@@ -250,11 +263,47 @@
   .bg-\[\#cdc1b4\] {
     background-color: #cdc1b4;
   }
+  .bg-\[\#edc22e\] {
+    background-color: #edc22e;
+  }
+  .bg-\[\#edc53f\] {
+    background-color: #edc53f;
+  }
+  .bg-\[\#edc850\] {
+    background-color: #edc850;
+  }
+  .bg-\[\#edcc61\] {
+    background-color: #edcc61;
+  }
+  .bg-\[\#edcf72\] {
+    background-color: #edcf72;
+  }
+  .bg-\[\#ede0c8\] {
+    background-color: #ede0c8;
+  }
+  .bg-\[\#eee4da\] {
+    background-color: #eee4da;
+  }
+  .bg-\[\#f2b179\] {
+    background-color: #f2b179;
+  }
+  .bg-\[\#f65e3b\] {
+    background-color: #f65e3b;
+  }
+  .bg-\[\#f67c5f\] {
+    background-color: #f67c5f;
+  }
+  .bg-\[\#f59563\] {
+    background-color: #f59563;
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
@@ -268,6 +317,10 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-6xl {
     font-size: var(--text-6xl);
@@ -302,6 +355,12 @@
   @media (hover: hover) {
     .hover\:bg-\[\#776452\]:hover {
       background-color: #776452;
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:text-6xl {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
     }
   }
 }

@@ -10,10 +10,10 @@
 
 <body>
     <p id="game-message" class="hidden mb-4 text-center text-2xl font-bold text-[#776e65]">
-    You reached 2048! You win!
-</p>
-    <div class="mx-auto mt-6 flex w-96 items-center justify-between">
-        <h1 class="text-6xl font-bold text-[#776e65]">2048</h1>
+        You reached 2048! You win!
+    </p>
+    <div class="mx-auto mt-6 flex w-full max-w-96 items-center justify-between gap-2 px-4">
+        <h1 class="text-4xl sm:text-6xl font-bold text-[#776e65]">2048</h1>
 
         <button id="new-game"
             class="h-16 rounded-xl bg-[#8f7a66] px-3 text-sm font-bold text-white hover:bg-[#776452] transition-colors cursor-pointer">
@@ -25,8 +25,9 @@
             <div id="score" class="text-2xl font-bold">0</div>
         </div>
     </div>
-    <div class="mt-16">
-        <div id="board" class="h-96 w-96 rounded-xl bg-[#bbada0] grid grid-cols-4 gap-2 mx-auto p-2">
+    <div class="mt-8">
+        <div id="board"
+            class="aspect-square w-full max-w-96 rounded-xl bg-[#bbada0] grid grid-cols-4 gap-2 mx-auto p-2">
         </div>
 
     </div>
